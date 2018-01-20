@@ -53,8 +53,9 @@ public class RestResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List getJson() {
-      return users_SessionBean.getAllUsers();
+    public Users getJson() {
+      users_SessionBean.insert(new Users(new Date().getTime(), "asas", "asas", "asas"));
+      return users_SessionBean.getUserByName("manh").get(0);
       
     }
     
@@ -64,9 +65,6 @@ public class RestResource {
     @Path("login")
     public String login(String input) throws JSONException {  
             JSONObject data = new JSONObject(input);
-            System.out.println(data);
-            System.out.println(data.getString("user_name"));
-            System.out.println(data.getString("user_password"));
             Users user = users_SessionBean.getUserByName_Password(data.getString("user_name"), data.getString("user_password"));
             if(user != null){
                 return user.getUserName();
@@ -74,17 +72,24 @@ public class RestResource {
                 return "user or password invalid";
             }  
     }
-//    
-//    @POST
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("insert")
-//    public String insert(@FormParam("id") long id, @FormParam("user_name") String user_name,
-//            @FormParam("user_email") String user_email, @FormParam("user_pass") String user_pass) {
-//       usersFacade.create(new Users(id, user_name, user_email, user_pass));
-//       return "done";
-//       
-//    }
-//    
+    
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("signup")
+    public String signup(String input) throws JSONException {
+       JSONObject data = new JSONObject(input);
+       String user_name = data.getString("user_name");
+       String user_email = data.getString("user_email");
+       String user_pass = data.getString("user_password");
+       System.out.println(user_name + ", " + user_email + " , " + user_pass);
+       if(users_SessionBean.getUserByName(user_name).isEmpty()){
+           users_SessionBean.insert(new Users(new Date().getTime(), user_name, user_email, user_pass));
+           return "Success"; 
+       } else{
+            return "User existed";
+       }   
+    }
+    
 //    @POST
 //    @Produces(MediaType.APPLICATION_JSON)
 //    @Path("update")

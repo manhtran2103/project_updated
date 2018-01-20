@@ -47,6 +47,9 @@ public class Users_SessionBean {
     public Users getUserById(long user_id){
         return (Users) em.createNamedQuery("Users.findByUserId").setParameter("userId", user_id).getSingleResult();
     }
+    public List<Users> getUserByName(String user_name){
+        return em.createNamedQuery("Users.findByUserName").setParameter("userName", user_name).getResultList();
+    }
     
     public List<Users> getAllUsers(){
         return em.createNamedQuery("Users.findAll").getResultList();
