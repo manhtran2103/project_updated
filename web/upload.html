@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="css/normalize.min.css">
+         <link rel="stylesheet" href="css/upload.css"> 
+         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400,400i" rel="stylesheet">
+    </head>
+    <body>
+         <div id="navbar">
+            <div id="logo"><a href="home.html">MediaApp</a></div>
+            <div id="about"><a href="#">About</a></div>
+            <div id="help"><a href="#">Help</a></div>
+        </div>
+        <div id="content" >
+        <form method="post" action="UploadServlet" enctype="multipart/form-data">
+            <label id="label">Choose your images to upload</label>
+            <input id="input" type="file" name="uploadFile" accept=".png, .jpg, .jpeg" />
+            <br/>
+            <input id="upload" type="submit" value="Upload" /> 
+        </form>
+        </div>
+        <script src="js/upload.js"></script>
+    </body>
+</html>

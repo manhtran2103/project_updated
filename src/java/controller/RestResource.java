@@ -58,30 +58,21 @@ public class RestResource {
       
     }
     
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("user")
-    public Users getUser() {
-      return users_SessionBean.getUserByName_Password("manh", "123");
-      
-    }
-    
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path("login")
-    public Users login(String input) {
-        
-        try {
+    public String login(String input) throws JSONException {  
             JSONObject data = new JSONObject(input);
             System.out.println(data);
-            System.out.println(data.getString("userName"));
-            System.out.println(data.getString("userPassword"));
-            return users_SessionBean.getUserByName_Password(data.getString("userName"), data.getString("userPassword"));
-        } catch (JSONException ex) {
-            Logger.getLogger(RestResource.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-       
+            System.out.println(data.getString("user_name"));
+            System.out.println(data.getString("user_password"));
+            Users user = users_SessionBean.getUserByName_Password(data.getString("user_name"), data.getString("user_password"));
+            if(user != null){
+                return user.getUserName();
+            } else{
+                return "user or password invalid";
+            }  
     }
 //    
 //    @POST

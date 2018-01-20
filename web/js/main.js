@@ -30,7 +30,7 @@ const upload = (evt) => {
         //document.querySelector('img').src = json.src;
     });
 };
-
+console.log(document.cookie);
 //document.querySelector('form').addEventListener('submit', upload);
    
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/signup.css"> 
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400,400i" rel="stylesheet">
+    </head>
+    <body>
+           <div id="navbar">
+            <div id="logo"><a href="home.html">MediaApp</a></div>
+            <div id="upload"><a href="#">Upload</a></div>
+            <div id="about"><a href="#">About</a></div>
+            <div id="help"><a href="#">Help</a></div>
+        </div>
+   
+            <div id="login-box">
+            <div class="left">
+              <h1>Sign up</h1>
+               <form method="POST" action="RegisterServlet">
+                   
+              <input id="user_name" type="text" name="user_name" placeholder="Username" required  >
+              <span id="user-result"></span>
+              <input type="email" id="user_email" name="user_email" placeholder="E-mail" required >
+               <span id="email-result"></span>
+              <input type="password" name="user_password" placeholder="Password" required />
+              <input id="submit" type="submit" name="signup_submit" value="Sign me up" />
+              <p id="message"></p>
+               </form>
+            </div>
+
+            <div class="right">
+              <span class="loginwith">Sign in with<br />social network</span>
+
+              <button class="social-signin facebook">Log in with facebook</button>
+              <button class="social-signin twitter">Log in with Twitter</button>
+              <button class="social-signin google">Log in with Google+</button>
+            </div>
+            <div class="or">OR</div>
+          </div>
+
+    </body>
+</html>

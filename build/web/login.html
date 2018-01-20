@@ -10,16 +10,32 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.1/fetch.min.js"></script>
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/login.css"> 
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400,400i" rel="stylesheet">
     </head>
     <body>
+          <div id="navbar">
+            <div id="logo"><a href="home.html">MediaApp</a></div>
+            <div id="upload"><a href="#">Upload</a></div>
+            <div id="about"><a href="#">About</a></div>
+            <div id="help"><a href="#">Help</a></div>
+        </div>
+   
     <center>
-        <form method="post" action="page/rest/login">           
-            <input type="text" name="userName" placeholder="Username"><br>            
-            <input type="password" name="userPassword" placeholder="Password"><br>
-            <input type="submit" value="Log In">
+        <div class="form">
+          <h1>Log In</h1>
+           <form>   
+            <input id="user_name" type="text" name="user_name" placeholder="Username" required  >
+            <input type="password" name="user_password" placeholder="Password" required />
+            <input id="submit" type="submit" name="signup_submit" value="Log In" />
+            <br><br><br>
+            <a href="signup.html" id="signup">Sign up here</a>
             <p id="error"></p>
-        </form>
+           </form>
+        </div>
     </center>
+   
     
     <!--script-->
     <script src="js/login.js"></script>

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Users;
+import org.json.JSONObject;
 
 /**
  *
@@ -21,8 +22,8 @@ import model.Users;
  */
 public class LoginServlet extends HttpServlet {
     
-//    @EJB
-//    Users_SessionBean users_SessionBean;
+    @EJB
+    Users_SessionBean users_SessionBean;
    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,20 +35,24 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        PrintWriter out = response.getWriter();
-       String userName = request.getParameter("userName");
-       String userPassword = request.getParameter("userPassword");
-       System.out.println(userName + " - " + userPassword);
+        System.out.println(request.getCharacterEncoding());
+//       JSONObject data = new JSONObject(request);
+//       
 //       Users u = null;
 //        try {
-//            u = users_SessionBean.getUserByName_Password(userName, userPassword);
+//            String user_name = data.getString("user_name");
+//            String user_password = data.getString("user_password");
+//            System.out.println(user_name + " - " + user_password);
+//            u = users_SessionBean.getUserByName_Password(user_name, user_password);
 //            System.out.println(u);
 //        } catch (Exception e) {
 //        }
 //         if(u == null){
-//          out.print("username or password invalid\nPlease try again");
+//          out.print("username or password invalid");
 //       } else{
 //           response.sendRedirect("/ex3/home.html");
-       }
+//       }
        
     }
+}
 
