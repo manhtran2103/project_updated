@@ -28,6 +28,7 @@ import javax.ws.rs.core.MediaType;
 import model.Users;
 import org.json.JSONException;
 import org.json.JSONObject;
+import tools.MD5;
 
 
 /**
@@ -65,7 +66,9 @@ public class RestResource {
     @Path("login")
     public String login(String input) throws JSONException {  
             JSONObject data = new JSONObject(input);
-            Users user = users_SessionBean.getUserByName_Password(data.getString("user_name"), data.getString("user_password"));
+            Users user = users_SessionBean.getUserByName_Password(
+                    data.getString("user_name"), 
+                    MD5.encryption(data.getString("user_password")));
             if(user != null){
                 return user.getUserName();
             } else{
@@ -80,7 +83,7 @@ public class RestResource {
        JSONObject data = new JSONObject(input);
        String user_name = data.getString("user_name");
        String user_email = data.getString("user_email");
-       String user_pass = data.getString("user_password");
+       String user_pass = MD5.encryption(data.getString("user_password"));
        System.out.println(user_name + ", " + user_email + " , " + user_pass);
        if(users_SessionBean.getUserByName(user_name).isEmpty()){
            users_SessionBean.insert(new Users(new Date().getTime(), user_name, user_email, user_pass));
