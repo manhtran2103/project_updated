@@ -9,7 +9,6 @@ const signup = (evt) => {
         user_email: user_email,
         user_password: user_password
     });
-    console.log(data);
     const settings = {
         method: 'POST',
         body: data
