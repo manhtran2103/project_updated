@@ -6,6 +6,7 @@
 package controller;
 
 
+import dao.Like_SessionBean;
 import dao.Media_SessionBean;
 import dao.Users_SessionBean;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import model.LikeUsers;
 import model.Media;
 import model.Users;
 import org.json.JSONException;
@@ -49,6 +51,8 @@ public class RestResource {
     private Users_SessionBean users_SessionBean ;
     @EJB
     private Media_SessionBean media_SessionBean;
+    @EJB
+    private Like_SessionBean like_SessionBean;
 
     @Context
     private UriInfo context;
@@ -111,37 +115,17 @@ public class RestResource {
     public Media getMediaById(@PathParam("id") long id){
        return media_SessionBean.getMediaById(id);
     }
-    
-     
-//    
-//    @POST
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("remove")
-//    public String remove(@FormParam("id") long id, @FormParam("user_name") String user_name,
-//            @FormParam("user_email") String user_email, @FormParam("user_pass") String user_pass) {
-//       usersFacade.remove(new Users(id, user_name, user_email, user_pass));
-//       return "done";
-//       
-//    }
-//    
-//   
-//    @PUT
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public void putJson(String content) {
-//    }
-//    
-//    @POST
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("select_all")
-//    public List<Users> getContactFromID() {
-//        List<Users> users = usersFacade.findAll();
-//        return users;
-//                
-//                
-//    }
-
-    
-
-   
-    
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("like")
+    public String likeFunction(String input) throws JSONException{
+       JSONObject data = new JSONObject(input);
+       String user_name = data.getString("user_name");
+       long media_id = Long.parseLong(data.getString("media_id"));
+       long user_id = users_SessionBean.getUserByName(user_name).get(0).getUserId();
+       System.out.println(media_id + ", " + user_id);
+       like_SessionBean.insert(new LikeUsers(user_id, media_id));
+       return "success";
+    }
+ 
 }

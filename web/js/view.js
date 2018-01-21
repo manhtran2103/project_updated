@@ -9,3 +9,21 @@ fetch(`/ex3/page/api/media/${media_id}`).then(res => res.json()).then(json => {
     console.log(json);
     document.querySelector('#img-01').setAttribute('src', `${json.mediaUrl}`);
 });
+
+const like = () => {
+  const data = JSON.stringify({
+      user_name: user_name,
+      media_id: media_id
+  });
+  console.log(data);
+  const body = {
+      method: 'POST',
+      body: data
+  };
+  fetch('/ex3/page/api/like', body).then(res => res.text()).then(text => {
+      if(text === 'success'){
+          document.querySelector('#like').setAttribute('src','img/like.png');
+      }
+  });
+};
+document.querySelector('#like').addEventListener('click', like);

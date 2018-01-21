@@ -34,7 +34,7 @@ fetch('/ex3/page/api/media').then((res) => {
                         <p><span class="by_user">by</span><span class="user">user</span>
                             <a href="/ex3/view.html?${media.mediaId}" class="right"><img src ="img/like_home.png" width="20px" height="20px"></a>
                             <span class="like_number">${media.mediaLike}</span>
-                            <a href="#" class="right"><img src="img/comments_home.png" width="23px" height="23px"></a></p>
+                            <a href="/ex3/view.html?${media.mediaId}" class="right"><img src="img/comments_home.png" width="23px" height="23px"></a></p>
                     </div>
                  </div>`;
     });
