@@ -30,9 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Comments.findAll", query = "SELECT c FROM Comments c")
     , @NamedQuery(name = "Comments.findByCommentId", query = "SELECT c FROM Comments c WHERE c.commentId = :commentId")
     , @NamedQuery(name = "Comments.findByMediaId", query = "SELECT c FROM Comments c WHERE c.mediaId = :mediaId")
-    , @NamedQuery(name = "Comments.findByUserId", query = "SELECT c FROM Comments c WHERE c.userId = :userId")
     , @NamedQuery(name = "Comments.findByUserName", query = "SELECT c FROM Comments c WHERE c.userName = :userName")
-    , @NamedQuery(name = "Comments.findByAvatar", query = "SELECT c FROM Comments c WHERE c.avatar = :avatar")
     , @NamedQuery(name = "Comments.findByContent", query = "SELECT c FROM Comments c WHERE c.content = :content")})
 public class Comments implements Serializable {
 
@@ -48,18 +46,9 @@ public class Comments implements Serializable {
     private long mediaId;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "user_id")
-    private long userId;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 200)
     @Column(name = "user_name")
     private String userName;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2000)
-    @Column(name = "avatar")
-    private String avatar;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10000)
@@ -73,12 +62,10 @@ public class Comments implements Serializable {
         this.commentId = commentId;
     }
 
-    public Comments(Long commentId, long mediaId, long userId, String userName, String avatar, String content) {
+    public Comments(Long commentId, long mediaId, String userName, String content) {
         this.commentId = commentId;
         this.mediaId = mediaId;
-        this.userId = userId;
         this.userName = userName;
-        this.avatar = avatar;
         this.content = content;
     }
 
@@ -98,28 +85,12 @@ public class Comments implements Serializable {
         this.mediaId = mediaId;
     }
 
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
     public String getUserName() {
         return userName;
     }
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
     }
 
     public String getContent() {

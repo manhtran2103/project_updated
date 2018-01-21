@@ -140,4 +140,16 @@ public class RestResource {
     public List<Comments> getComments(){
        return comments_SessionBean.getComments();
     }
+    
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("comments/add")
+    public String addComment(String input) throws JSONException{
+       JSONObject data = new JSONObject(input);
+       String user_name = data.getString("user_name");
+       String comment = data.getString("comment");
+       long media_id = Long.parseLong(data.getString("media_id"));
+       comments_SessionBean.insert(new Comments(null, media_id, user_name, comment));
+       return "success";
+    }
 }

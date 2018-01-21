@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Manh%20Tran/Documents/NetBeansProjects/ex3/src/java/dao/Media_SessionBean.java</file>
-            <file>file:/C:/Users/Manh%20Tran/Documents/NetBeansProjects/ex3/web/js/upload.js</file>
-            <file>file:/C:/Users/Manh%20Tran/Documents/NetBeansProjects/ex3/src/java/controller/RestResource.java</file>
-            <file>file:/C:/Users/Manh%20Tran/Documents/NetBeansProjects/ex3/src/java/controller/UploadServlet.java</file>
-            <file>file:/C:/Users/Manh%20Tran/Documents/NetBeansProjects/ex3/web/home.html</file>
-            <file>file:/C:/Users/Manh%20Tran/Documents/NetBeansProjects/ex3/web/upload.html</file>
-            <file>file:/C:/Users/Manh%20Tran/Documents/NetBeansProjects/ex3/web/js/signup.js</file>
+            <file>file:/C:/Users/Manh%20Tran/Desktop/project_updated/src/java/controller/RestResource.java</file>
+            <file>file:/C:/Users/Manh%20Tran/Desktop/project_updated/web/home.html</file>
+            <file>file:/C:/Users/Manh%20Tran/Desktop/project_updated/src/java/dao/Media_SessionBean.java</file>
+            <file>file:/C:/Users/Manh%20Tran/Desktop/project_updated/web/js/view.js</file>
+            <file>file:/C:/Users/Manh%20Tran/Desktop/project_updated/src/java/dao/Like_SessionBean.java</file>
+            <file>file:/C:/Users/Manh%20Tran/Desktop/project_updated/web/view.html</file>
         </group>
     </open-files>
 </project-private>
