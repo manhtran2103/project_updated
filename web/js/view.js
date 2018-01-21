@@ -10,12 +10,12 @@ fetch(`/ex3/page/api/media/${media_id}`).then(res => res.json()).then(json => {
     document.querySelector('#img-01').setAttribute('src', `${json.mediaUrl}`);
 });
 
+// like
 const like = () => {
   const data = JSON.stringify({
       user_name: user_name,
       media_id: media_id
   });
-  console.log(data);
   const body = {
       method: 'POST',
       body: data
@@ -28,6 +28,23 @@ const like = () => {
 };
 document.querySelector('#like').addEventListener('click', like);
 
+// fetching comments
+fetch('/ex3/page/api/comments').then(res => res.json()).then(json => {
+    let html = '';
+    json.map((comment) => {
+      html += `<div class="div-comment">
+                        <div class="img-user"><img src="img/user.png"></div>
+                        <div>
+                        <a class="username" href="#">${comment.userName}</a>
+                        <p class="comment">${comment.content}</p>
+                        </div>
+                    </div>
+         `;  
+    });
+    document.querySelector('#content').innerHTML = html;
+});
+
+//comment
 const comment = (e) => {
     e.preventDefault();
     const comment = document.querySelector('[name="comment"]').value;
@@ -36,16 +53,24 @@ const comment = (e) => {
       media_id: media_id,
       comment: comment
     });
-    console.log(data);
     const body = {
       method: 'POST',
       body: data
   };
   fetch('/ex3/page/api/comments/add', body).then(res => res.text()).then(text => {
-      console.log(text);
       if(text === 'success'){
+        const e = document.createElement('div');
+        e.setAttribute('class', 'div-comment');
+        e.innerHTML = `<div class="img-user"><img src="img/user.png"></div>
+                        <div>
+                        <a class="username" href="#">${user_name}</a>
+                        <p class="comment">${comment}</p>
+                        </div>`;
+        document.querySelector('#content').appendChild(e);
         document.querySelector('[name="comment"]').value = "";  
       }
   });
 };
 document.querySelector('form').addEventListener('submit', comment);
+
+
