@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>View</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="css/view.css"> 
+        <!--google font-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400,400i" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.1/fetch.min.js"></script> 
+      
+    </head>
+    <body>
+         <div id="view">
+            <div id="img"><img id="img-01"></div>
+            <div id="comments">
+                <div id="icon"><img src ="img/unlike.png" id="like">&nbsp;&nbsp;&nbsp;
+                    <span id="like_quantity">100</span>
+                </div>
+                <div class="user-comments" >
+                    <div id="content">
+                    <div class="div-comment">
+                        <div class="img-user"><img src="img/baby.jpg"></div>
+                        <div>
+                        <a class="username" href="#">username</a>
+                        <p class="comment">comment</p>
+                        </div>
+                    </div>
+                    </div>
+                    <div style="margin: 20px; padding: 10px;">
+                        <form>
+                        <input type="text" name="comments" placeholder="add your comment" size="50">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>   
+         <script src="js/view.js"></script>
+    </body>
+</html>

@@ -35,5 +35,8 @@ public class Media_SessionBean {
     public List<Media> getListMedia(){
         return em.createNamedQuery("Media.findAll").getResultList();
     }
+    public Media getMediaById(long media_id){
+        return (Media) em.createNamedQuery("Media.findByMediaId").setParameter("mediaId", media_id).getSingleResult();
+    }
     
 }

@@ -25,6 +25,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import model.Media;
 import model.Users;
@@ -55,20 +56,6 @@ public class RestResource {
     public RestResource() {
         
     }
-//
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Users getJson() {
-//      users_SessionBean.insert(new Users(new Date().getTime(), "asas", "asas", "asas"));
-//      return users_SessionBean.getUserByName("manh").get(0);
-//      
-//    }
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String test() {
-      return "ok";
-    }
-    
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -108,6 +95,24 @@ public class RestResource {
     public List<Media> getListMedia(){
        return media_SessionBean.getListMedia();
     }
+    
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("user")
+    public String getUserName(String input) throws JSONException{
+        JSONObject data = new JSONObject(input);
+        System.out.println(data.getString("user_id"));
+        long user_id = Long.parseLong(data.getString("user_id"));
+        return users_SessionBean.getUserById(user_id).getUserName(); 
+    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/media/{id}")
+    public Media getMediaById(@PathParam("id") long id){
+       return media_SessionBean.getMediaById(id);
+    }
+    
+     
 //    
 //    @POST
 //    @Produces(MediaType.APPLICATION_JSON)

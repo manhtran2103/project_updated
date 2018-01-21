@@ -42,6 +42,7 @@ a:hover{
     font-style: italic; 
     color: white;
     margin-right: 5px;
+    margin-left: 5px;
 }
 .user{
     font-weight: bold; 
@@ -116,6 +117,7 @@ a:hover{
 
 #media div {
     position: relative;
+    width: 100%;
 /*    transition: transform 0.05s;*/
    
 }
@@ -123,18 +125,12 @@ a:hover{
     position: absolute;
     background-color: rgba(0,0,0,0.1);
     bottom: 0;
-    left: 0px;
-    right: 0px;
+    left: 0;
+    right: 0;
     width: 100%;
-    padding: 10px;
-    /*opacity: 0.1;*/
+    padding: 5px;
     display: none;
-    transition: display 1s;
     
-}
-#media div div p {
-/*    font-size: 20px;
-    padding: 10px;*/
 }
 
 #media div:hover div{
@@ -142,7 +138,6 @@ a:hover{
 }
 
 #media div:hover {
-    /*transform: scale(1.01);*/
      opacity: 0.9;
 }
 /*demo*/
