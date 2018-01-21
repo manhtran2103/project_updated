@@ -6,6 +6,7 @@
 package controller;
 
 
+import dao.Media_SessionBean;
 import dao.Users_SessionBean;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,6 +26,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
+import model.Media;
 import model.Users;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,6 +46,8 @@ public class RestResource {
 
     @EJB
     private Users_SessionBean users_SessionBean ;
+    @EJB
+    private Media_SessionBean media_SessionBean;
 
     @Context
     private UriInfo context;
@@ -98,15 +102,12 @@ public class RestResource {
        }   
     }
     
-//    @POST
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("update")
-//    public String update(@FormParam("id") long id, @FormParam("user_name") String user_name,
-//            @FormParam("user_email") String user_email, @FormParam("user_pass") String user_pass) {
-//       usersFacade.edit(new Users(id, user_name, user_email, user_pass));
-//       return "done";
-//       
-//    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("media")
+    public List<Media> getListMedia(){
+       return media_SessionBean.getListMedia();
+    }
 //    
 //    @POST
 //    @Produces(MediaType.APPLICATION_JSON)

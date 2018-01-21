@@ -19,4 +19,5 @@ const logout = (e) => {
     window.location = '/ex3/home.html';
     
 };
+
 document.querySelector('#logout').addEventListener('click', logout);
