@@ -20,11 +20,14 @@ and open the template in the editor.
             <div id="help"><a href="#">Help</a></div>
         </div>
         <div id="content" >
-        <form method="post" action="UploadServlet" enctype="multipart/form-data">
+        <form enctype="multipart/form-data" >
             <label id="label">Choose your images to upload</label>
             <input id="input" type="file" name="uploadFile" accept=".png, .jpg, .jpeg" />
             <br/>
             <input id="upload" type="submit" value="Upload" /> 
+            <input type="hidden" id="user_name" name="user_name" value="asas"/>
+            <br><br>
+            <p id="message"></p>
         </form>
         </div>
         <script src="js/upload.js"></script>

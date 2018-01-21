@@ -51,13 +51,18 @@ public class RestResource {
     public RestResource() {
         
     }
-
+//
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Users getJson() {
+//      users_SessionBean.insert(new Users(new Date().getTime(), "asas", "asas", "asas"));
+//      return users_SessionBean.getUserByName("manh").get(0);
+//      
+//    }
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Users getJson() {
-      users_SessionBean.insert(new Users(new Date().getTime(), "asas", "asas", "asas"));
-      return users_SessionBean.getUserByName("manh").get(0);
-      
+    @Produces(MediaType.TEXT_PLAIN)
+    public String test() {
+      return "ok";
     }
     
 
@@ -89,7 +94,7 @@ public class RestResource {
            users_SessionBean.insert(new Users(new Date().getTime(), user_name, user_email, user_pass));
            return "Success"; 
        } else{
-            return "User existed";
+           return "User existed";
        }   
     }
     

@@ -7,7 +7,6 @@ const login = (evt) => {
         user_name: user_name,
         user_password: user_password
     });
-    console.log(data);
     const settings = {
         method: 'POST',
         body: data
@@ -17,10 +16,8 @@ const login = (evt) => {
             document.querySelector('#error').innerHTML = "";
             return response.text();
         }
-         console.log("password or username invalid");
          document.querySelector('#error').innerHTML = "password or username invalid";  
     }).then((text) => {
-        console.log(text);  
         if(text !== undefined){
             document.cookie = ""+text+"";
             document.cookie = ""+text+"; expires=Thu, 18 Dec 2018 12:00:00 UTC; path=/upload.html";
