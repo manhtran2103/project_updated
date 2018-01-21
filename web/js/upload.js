@@ -20,7 +20,6 @@ const upload = (evt) => {
     };
     
     fetch('http://localhost:8080/ex3/UploadServlet', settings).then((response) => {
-        console.log(response);
         return response.text();
     }).then((text) => {
             html.innerHTML = text;
@@ -32,7 +31,6 @@ const upload = (evt) => {
         console.log(err);
     });
 };
-
 document.querySelector('form').addEventListener('submit', upload);
    
 

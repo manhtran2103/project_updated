@@ -29,7 +29,7 @@ const like = () => {
 document.querySelector('#like').addEventListener('click', like);
 
 // fetching comments
-fetch('/ex3/page/api/comments').then(res => res.json()).then(json => {
+fetch(`/ex3/page/api/comments/${media_id}`).then(res => res.json()).then(json => {
     let html = '';
     json.map((comment) => {
       html += `<div class="div-comment">

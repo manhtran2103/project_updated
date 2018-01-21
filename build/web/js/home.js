@@ -1,5 +1,5 @@
 "use strict";
-console.log(document.cookie);
+
 const username = document.cookie;
 if(username){
     document.querySelector('#signup').setAttribute('style', 'display: none');
@@ -21,11 +21,11 @@ const logout = (e) => {
 };
 document.querySelector('#logout').addEventListener('click', logout);
 
+//fetching media
 const listMedia = document.querySelector('#media');
 fetch('/ex3/page/api/media').then((res) => {
     return res.json();
 }).then((json) => {
-    console.log(json);
     let html = "";
     json.map((media, index) => {
        html += ` <div>                   
@@ -34,7 +34,7 @@ fetch('/ex3/page/api/media').then((res) => {
                         <p><span class="by_user">by</span><span class="user">user</span>
                             <a href="/ex3/view.html?${media.mediaId}" class="right"><img src ="img/like_home.png" width="20px" height="20px"></a>
                             <span class="like_number">${media.mediaLike}</span>
-                            <a href="/ex3/view.html?${media.mediaId}" class="right"><img src="img/comments_home.png" width="23px" height="23px"></a></p>
+                            <a href="/ex3/view.html?${media.mediaId}" class="right"><img src="img/comments.png" width="23px" height="23px"></a></p>
                     </div>
                  </div>`;
     });

@@ -31,7 +31,7 @@ public class Comments_SessionBean {
     public void remove(Comments m){
         em.remove(em.merge(m));
     }
-    public List<Comments> getComments(){
-        return em.createNamedQuery("Comments.findAll").getResultList();
+   public List<Comments> getComments(long media_id){
+        return em.createNamedQuery("Comments.findByMediaId").setParameter("mediaId", media_id).getResultList();
     }
 }

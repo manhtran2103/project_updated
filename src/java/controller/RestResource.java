@@ -136,9 +136,9 @@ public class RestResource {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("comments")
-    public List<Comments> getComments(){
-       return comments_SessionBean.getComments();
+    @Path("comments/{id}")
+    public List<Comments> getCommentsByMediaId(@PathParam("id") long id){
+       return comments_SessionBean.getComments(id);
     }
     
     @POST
