@@ -19,5 +19,24 @@ const logout = (e) => {
     window.location = '/ex3/home.html';
     
 };
-
+const listMedia = document.querySelector('#media');
+fetch('/ex3/page/api/media').then((res) => {
+    return res.json();
+}).then((json) => {
+    console.log(json);
+    let html = "";
+    json.map((media, index) => {
+       console.log(media.mediaUrl + ", index=" +index ); 
+       html += ` <div>                   
+                    <img src="${media.mediaUrl}" alt="image" class="image">
+                    <div>
+                        <p><span class="by_user">by</span><span class="user">user</span>
+                            <a href="#" class="right"><img src ="img/like_home.png" width="20px" height="20px"></a>
+                            <span class="like_number">${media.mediaLike}</span>
+                            <a href="#" class="right"><img src="img/comments_home.png" width="23px" height="23px"></a></p>
+                    </div>
+                 </div>`;
+    });
+    listMedia.innerHTML = html;
+});
 document.querySelector('#logout').addEventListener('click', logout);
