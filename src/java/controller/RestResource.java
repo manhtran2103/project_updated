@@ -6,6 +6,7 @@
 package controller;
 
 
+import dao.Comments_SessionBean;
 import dao.Like_SessionBean;
 import dao.Media_SessionBean;
 import dao.Users_SessionBean;
@@ -28,6 +29,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import model.Comments;
 import model.LikeUsers;
 import model.Media;
 import model.Users;
@@ -53,6 +55,8 @@ public class RestResource {
     private Media_SessionBean media_SessionBean;
     @EJB
     private Like_SessionBean like_SessionBean;
+    @EJB
+    private Comments_SessionBean comments_SessionBean;
 
     @Context
     private UriInfo context;
@@ -109,12 +113,14 @@ public class RestResource {
         long user_id = Long.parseLong(data.getString("user_id"));
         return users_SessionBean.getUserById(user_id).getUserName(); 
     }
+    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/media/{id}")
     public Media getMediaById(@PathParam("id") long id){
        return media_SessionBean.getMediaById(id);
     }
+    
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path("like")
@@ -127,5 +133,11 @@ public class RestResource {
        like_SessionBean.insert(new LikeUsers(user_id, media_id));
        return "success";
     }
- 
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("comments")
+    public List<Comments> getComments(){
+       return comments_SessionBean.getComments();
+    }
 }
