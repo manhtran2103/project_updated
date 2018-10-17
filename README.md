@@ -41,9 +41,6 @@
 ![view](https://user-images.githubusercontent.com/26892314/35199251-648b9cd6-ff04-11e7-8c1f-879e7412daf9.png)
 
 
-### Group members:
-- Manh Tran 
-- Manh Nguyen
 
 
 
